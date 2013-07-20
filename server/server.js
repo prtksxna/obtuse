@@ -12,8 +12,8 @@ var io = socket_io.listen(server);
 server.listen(4242);
 
 
-// Currently active games.
-var ACTIVE_GAMES = {};
+// Static files and assets.
+app.use('/static', express.static(__dirname + '/static'));
 
 
 // Route for homepage.
@@ -30,17 +30,18 @@ app.get('/', function(req, res) {
 
 // Route for game page.
 app.get('/:gameId', function(req, res) {
-  res.sendfile(__dirname + '/static/game/index.html');
+  res.sendfile(__dirname + '/game.html');
 });
 
 
 // Route for controller page.
 app.get('/c/:gameId', function(req, res) {
-  res.sendfile(__dirname + '/static/controller/index.html');
+  res.sendfile(__dirname + '/controller.html');
 });
 
 
 io.sockets.on('connection', function (socket) {
+  // TODO: prevent more than two players in a single game.
   socket.on('gameId game', function(gameId) {
     socket.join(gameId);
   });
