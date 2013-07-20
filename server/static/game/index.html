@@ -1,0 +1,19 @@
+<html>
+<head>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		var gameId = window.location.pathname.replace('/', '');
+		var socket = io.connect('http://localhost');
+		
+		socket.on('connect', function() {
+			socket.emit('gameId game', gameId);
+		});
+		
+		socket.on('moveleft', function(data) {
+			console.log('moveleft');
+		});
+	</script>
+</head>
+<body>
+</body>
+</html>
