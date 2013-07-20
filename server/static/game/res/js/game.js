@@ -1,5 +1,20 @@
 $(window).bind("load",function(e){
     var k = Game.init();
+
+    var gameId = window.location.pathname.replace('/', '');
+    var socket = io.connect('http://192.168.0.104');
+    
+    socket.on('connect', function() {
+        socket.emit('gameId game', gameId);
+    });
+    
+    socket.on('moveleft', function(data) {
+        k.event = 'left';
+    });
+
+    socket.on('moveright', function(data) {
+        k.event = 'right';
+    });
 });
 
 var Game = {

@@ -4,6 +4,7 @@
     <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/static/controller/res/master.css" />
     <script type="text/javascript" src="/static/controller/res/gyro.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <title>Controller</title>
   </head>
 
@@ -17,13 +18,22 @@
     </table>
 
     <script type="text/javascript">
-      gyro.startTracking(function(o){
-      if(o.beta < -30){
-		  // turn
-		  }else if(o.beta > 30){
-	//turn other
-	}
+      var socket = io.connect('http://192.168.0.104');
+      var gameId = window.location.pathname.replace('/c/', '');
+
+      socket.on('connect', function() {
+        socket.emit('gameId client', gameId);
       });
+      
+      gyro.frequency = 10;
+      gyro.startTracking(function(o) {
+        if(o.beta < -20) {
+          socket.emit('moveleft');
+        } else if(o.beta > 20) {
+          socket.emit('moveright');
+        }
+      });
+
     </script>
   </body>
 
