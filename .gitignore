@@ -17,3 +17,7 @@ Icon
 *~
 *#
 *.psd
+
+
+# Node
+node_modules/
