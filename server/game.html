@@ -1,19 +1,18 @@
+<!DOCTYPE html>
 <html>
-<head>
-	<script src="/socket.io/socket.io.js"></script>
-	<script>
-		var gameId = window.location.pathname.replace('/', '');
-		var socket = io.connect('http://localhost');
-		
-		socket.on('connect', function() {
-			socket.emit('gameId game', gameId);
-		});
-		
-		socket.on('moveleft', function(data) {
-			console.log('moveleft');
-		});
-	</script>
-</head>
-<body>
-</body>
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="/static/game/res/js/jq.js"></script>
+    <script type="text/javascript" src="/static/game/res/js/player.js"></script>
+    <script type="text/javascript" src="/static/game/res/js/game.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/game/res/css/master.css" />
+    <title>Obtuse</title>
+  </head>
+
+  <body>
+    <div id="container"></div>
+    <script>
+    </script>
+  </body>
+
 </html>

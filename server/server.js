@@ -12,6 +12,9 @@ var io = socket_io.listen(server);
 server.listen(4242);
 
 
+var ACTIVE_GAMES = {};
+
+
 // Static files and assets.
 app.use('/static', express.static(__dirname + '/static'));
 
