@@ -1,0 +1,22 @@
+<html>
+<head>
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+	<button id="moveleft">Move Left</button>
+	<button id="moveright">Move Right</button>
+	
+	<script type="text/javascript">
+		var socket = io.connect('http://localhost');
+		var gameId = window.location.pathname.replace('/c/', '');
+
+		socket.on('connect', function() {
+			socket.emit('gameId client', gameId);
+		});
+		
+		document.getElementById('moveleft').addEventListener('click', function() {
+			socket.emit('moveleft', gameId);
+		});
+	</script>
+</body>
+</html>
