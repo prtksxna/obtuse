@@ -2,7 +2,8 @@
 <html>
   <head>
     <link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="master.css" />
+    <link rel="stylesheet" type="text/css" href="res/master.css" />
+    <script type="text/javascript" src="res/gyro.js"></script>
     <title>Controller</title>
   </head>
 
@@ -14,6 +15,16 @@
 	<td id="fire">Fire</td>
       </tr>
     </table>
+
+    <script type="text/javascript">
+      gyro.startTracking(function(o){
+      if(o.beta < -30){
+		  // turn
+		  }else if(o.beta > 30){
+	//turn other
+	}
+      });
+    </script>
   </body>
 
 </html>

@@ -42,11 +42,11 @@ var Game = {
             switch(e.keyCode){
             case 37:
                 e.preventDefault();
-                game.event = "left";
+ //               game.event = "left";
                 break;
             case 39:
                 e.preventDefault();
-                game.event = "right";
+//                game.event = "right";
                 break;
             case 32:
                 e.preventDefault();
