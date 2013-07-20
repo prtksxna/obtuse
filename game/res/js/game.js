@@ -80,6 +80,8 @@ var Game = {
 
 	if(this.event == "right"){
 	    this.p1.x += 1;
+	}else if(this.event == "left"){
+	    this.p1.x -= 1;
 	}
 
 	this.p1.draw();
