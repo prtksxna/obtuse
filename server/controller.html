@@ -18,18 +18,18 @@
     </table>
 
     <script type="text/javascript">
-      var socket = io.connect('http://192.168.0.104');
+      var socket = io.connect('http://192.168.0.103');
       var gameId = window.location.pathname.replace('/c/', '');
 
       socket.on('connect', function() {
         socket.emit('gameId client', gameId);
       });
       
-      gyro.frequency = 10;
+      gyro.frequency = 1;
       gyro.startTracking(function(o) {
-        if(o.beta < -20) {
+        if(o.beta < -5) {
           socket.emit('moveleft');
-        } else if(o.beta > 20) {
+        } else if(o.beta > 5) {
           socket.emit('moveright');
         }
       });
